@@ -74,11 +74,5 @@ describe (Animal) do
       end
     end
 
-    # describe("#find") do
-    #   it("allows shelter to find people to adopt an animal") do
-    #     person = Person.new({:name => 'rufus', :gender => 'male', :date_of_admittance => '2017-06-04', :type => 'fish', :breed => 'carp'})
-    #     expect(person.find).to(eq())
-    #   end
-    # end
 
   end

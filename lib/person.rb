@@ -6,7 +6,7 @@ class Person
     @phone = attributes.fetch(:phone)
     @animal_type_preference = attributes.fetch(:animal_type_preference)
     @breed_type_preference = attributes.fetch(:breed_type_preference)
-    @id = attributes.fetch(:id)
+    @id = attributes[:id]
   end
 
   define_method(:save) do
@@ -30,6 +30,18 @@ class Person
 
   define_method(:==) do |another_person|
     self.name().==(another_person.name()).&(self.phone().==(another_person.phone))&(self.animal_type_preference().==(another_person.animal_type_preference())).&(self.breed_type_preference().==(another_person.breed_type_preference()))
+  end
+
+  define_singleton_method(:find) do |identify|
+    found_person = nil
+    returned_persons = DB.exec("SELECT * FROM add_person;")
+    returned_persons.each do |person|
+      id = person.fetch("id").to_i
+      if id.to_i == identify.to_i
+        found_person = person
+      end
+    end
+    found_person
   end
 
 end
