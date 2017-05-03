@@ -39,4 +39,20 @@ describe (Animal) do
     end
   end
 
+    describe '.all' do
+      it('empties the array initially') do
+      expect(Animal.all()).to(eq([]))
+    end
+  end
+
+    describe '#save' do
+      it('it saves to the empty array') do
+        test_animal = Animal.new({:name => 'rufus', :gender => 'male', :date_of_admittance => '2017-06-04', :type => 'fish', :breed => 'carp'})
+        test_animal.save()
+        expect(Animal.all()).to(eq([test_animal]))
+        test_animal2 = Animal.new({:name => 'murphy', :gender => 'female', :date_of_admittance => '2017-06-03', :type => 'bird', :breed => 'finch'})
+        test_animal2.save()
+        expect(Animal.all()).to(eq([test_animal,test_animal2]))
+      end
+    end
 end
