@@ -32,6 +32,8 @@ class Animal
     animals
   end
 
+
+
   define_method(:==) do |another_animal|
     self.name().==(another_animal.name()).&(self.gender().==(another_animal.gender))&(self.date_of_admittance().==(another_animal.date_of_admittance())).&(self.type().==(another_animal.type())).&(self.breed().==(another_animal.breed()))
   end

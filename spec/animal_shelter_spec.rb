@@ -1,15 +1,9 @@
 require "animal_shelter"
+require "person"
+require "spec_helper"
 require "rspec"
 require "pry"
 
-DB = PG.connect({:dbname => "animal_shelter"})
-
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM add_animal *;")
-    DB.exec("DELETE FROM add_person *;")
-  end
-end
 
 describe (Animal) do
 
@@ -50,7 +44,6 @@ describe (Animal) do
 
     describe '.all' do
       it('empties the array initially') do
-        # test_animal = Animal.new({:name => 'rufus', :gender => 'male', :date_of_admittance => '2017-06-04', :type => 'fish', :breed => 'carp', :id => nil})
       expect(Animal.all()).to(eq([]))
     end
   end
@@ -83,8 +76,8 @@ describe (Animal) do
 
     # describe("#find") do
     #   it("allows shelter to find people to adopt an animal") do
-    #     patient = Animal.new({:name => 'rufus', :gender => 'male', :date_of_admittance => '2017-06-04', :type => 'fish', :breed => 'carp'})
-    #     expect(shelter.find).to(eq())
+    #     person = Person.new({:name => 'rufus', :gender => 'male', :date_of_admittance => '2017-06-04', :type => 'fish', :breed => 'carp'})
+    #     expect(person.find).to(eq())
     #   end
     # end
 
